@@ -5,7 +5,7 @@
 HIDEDaSF is a new integrated edge effect detection and correction framework for novel hyperspectral LiDAR remote sensor, incorporating histogram of intensity distribution, edge detection, and spherical spatial filtering (HIDEDaSF) This framework addresses the intensity loss and spectral distortion caused by partial laser footprint illumination at leaf boundaries, enabling more accurate retrieval of vegetation intensity and spectral parameters from HSL data.
 
 The methodology is detailed in the research paper:  
-*Bai, J., Niu, Z., Zhu, J., et al. (2025). HIDEDaSF: a detection and correction framework for edge effect on hyperspectral intensity data for novel hyperspectral LiDAR remote sensor. Remote Sensing of Environment.*
+*Bai, J., Niu, Z., Zhu, J., et al. (2025). HIDEDaSF: a detection and correction framework for edge effect on hyperspectral intensity data for novel hyperspectral LiDAR remote sensor.*
 
 ## Workflow
 The framework consists of **5 core modules** that process raw HSL point cloud data sequentially:
