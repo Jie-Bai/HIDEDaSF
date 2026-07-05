@@ -73,7 +73,7 @@ edge_corrected_df.to_csv(edge_corrected_path, index=False)
 all_corrected_df = pd.concat([no_edge_df, edge_corrected_df], ignore_index=True)
 all_corrected_df.to_csv(all_corrected_path, index=False)
 
-print("\n✅ 球空间边缘效应校正完成！")
+print("\n球空间边缘效应校正完成！")
 print(f"非边缘点输出: {no_edge_path}")
 print(f"校正后边缘点输出: {edge_corrected_path}")
 print(f"合并输出: {all_corrected_path}")
