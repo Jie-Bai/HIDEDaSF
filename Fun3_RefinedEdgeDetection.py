@@ -96,7 +96,7 @@ for idx, row in df2.iterrows():
 swell_refined_df = df2.loc[swell_indices, ['X','Y','Z','distance'] + bands]
 swell_refined_csv = os.path.join(output_dir, "SwellRefined_edge_points.csv")
 swell_refined_df.to_csv(swell_refined_csv, index=False)
-print(f"✅ 膨胀后精边缘点导出：{swell_refined_csv}（共 {len(swell_refined_df)} 点）")
+print(f"膨胀后精边缘点导出：{swell_refined_csv}（共 {len(swell_refined_df)} 点）")
 
 # ********************************** 11. 以 0.45 cm 分辨率输出该集合的投影图（沿用同一网格范围）**********************************
 proj_swell = np.zeros((y_bins, x_bins), dtype=np.uint8)
