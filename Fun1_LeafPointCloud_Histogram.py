@@ -76,7 +76,7 @@ combined_path = os.path.join(output_dir, "all_band_histograms_second_peak50.png"
 plt.savefig(combined_path, dpi=300, bbox_inches='tight')
 plt.close()
 
-print("✅ 已绘制综合直方图（红线=第二高频强度的一半）。")
+print("已绘制综合直方图（红线=第二高频强度的一半）。")
 print(f"保存路径: {combined_path}")
 
 # ********************************** 7. 保存阈值数据 **********************************
