@@ -66,7 +66,7 @@ neighbor_sum = convolve(projection, kernel, mode='constant', cval=0)
 # 符合条件（邻域内像元≥一定数量）保留
 refined_mask = (neighbor_sum >= edgeThresholdNumber) & (projection == 1)
 
-# ********************************** 形态学膨胀（可调） **********************************
+# ********************************** 8. 形态学膨胀（可调） **********************************
 dilate_iters = 1  # 膨胀迭代次数，>1 会更粗
 
 # 选一：4-邻域（十字形核，扩张更克制）
@@ -83,7 +83,7 @@ refined_mask = binary_dilation(refined_mask, structure=structure_8, iterations=d
 
 # refined_mask = binary_dilation(...)
 
-# ********************************** A. 用同一网格把去盆点云映射进来，找出膨胀后为1的像元内的所有点 **********************************
+# ********************************** 9. 用同一网格把去盆点云映射进来，找出膨胀后为1的像元内的所有点 **********************************
 swell_indices = []
 for idx, row in df2.iterrows():
     x_idx = int((row['X'] - x_min) / resolution)   # 注意：这里的 resolution 仍是 0.45 cm
@@ -92,13 +92,13 @@ for idx, row in df2.iterrows():
         if refined_mask[y_idx, x_idx]:
             swell_indices.append(idx)
 
-# ********************************** B. 导出“膨胀精边缘”的真实点（来自去盆点云）**********************************
+# ********************************** 10. 导出“膨胀精边缘”的真实点（来自去盆点云）**********************************
 swell_refined_df = df2.loc[swell_indices, ['X','Y','Z','distance'] + bands]
 swell_refined_csv = os.path.join(output_dir, "SwellRefined_edge_points.csv")
 swell_refined_df.to_csv(swell_refined_csv, index=False)
 print(f"✅ 膨胀后精边缘点导出：{swell_refined_csv}（共 {len(swell_refined_df)} 点）")
 
-# ********************************** C. 以 0.45 cm 分辨率输出该集合的投影图（沿用同一网格范围）**********************************
+# ********************************** 11. 以 0.45 cm 分辨率输出该集合的投影图（沿用同一网格范围）**********************************
 proj_swell = np.zeros((y_bins, x_bins), dtype=np.uint8)
 for idx, row in swell_refined_df.iterrows():
     x_idx = int((row['X'] - x_min) / resolution)
@@ -113,7 +113,7 @@ plt.savefig(os.path.join(output_dir, "SwellRefined_edge_projection_045cm.png"), 
 plt.close()
 
 
-print(f"\n✅ 精边缘检测完成！")
+print(f"\n 精边缘检测完成！")
 print(f"粗边缘图像: {os.path.join(output_dir, 'rough_edge_projection.png')}")
 print(f"精边缘图像: {os.path.join(output_dir, 'refined_edge_projection.png')}")
 
@@ -142,7 +142,7 @@ df_out = merged[merged['_merge'] == 'left_only'].drop(columns=['_merge'])
 # 保存
 df_out.to_csv(out_path, index=False)
 
-print("✅ 已生成非边缘去盆点云：", out_path)
+print("已生成非边缘去盆点云：", out_path)
 print(f"原始去盆点数：{len(df_all)}")
 print(f"精边缘点数：{len(df_edge)}")
 print(f"剔除后剩余点数：{len(df_out)}")
