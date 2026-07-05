@@ -69,7 +69,7 @@ all_edge_points = df.loc[sorted(list(edge_indices_union))].copy()
 all_edge_path = os.path.join(output_dir, "all_edge_points.csv")
 all_edge_points.to_csv(all_edge_path, index=False)
 
-print("\n✅ 已生成所有波段的边缘点云数据：")
+print("\n已生成所有波段的边缘点云数据：")
 print(f"  单波段文件保存路径：{output_dir}")
 print(f"  汇总边缘点文件：{all_edge_path}")
 
