@@ -1,8 +1,8 @@
-# HIDEDaSF: a detection and correction framework for edge effect on hyperspectral intensity data for novel hyperspectral LiDAR remote sensor
+# HIDEDaSF: a detection and filtering framework for edge effect on hyperspectral intensity data for novel hyperspectral LiDAR remote sensor
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
-HIDEDaSF is a new integrated edge effect detection and correction framework for novel hyperspectral LiDAR remote sensor, incorporating histogram of intensity distribution, edge detection, and spherical spatial filtering (HIDEDaSF). This framework addresses the intensity loss and spectral distortion caused by partial laser footprint illumination at leaf boundaries, enabling more accurate retrieval of vegetation intensity and spectral parameters from HSL data.
+HIDEDaSF is a new integrated edge effect detection and filtering framework for novel hyperspectral LiDAR remote sensor, incorporating histogram of intensity distribution, edge detection, and spherical spatial filtering (HIDEDaSF). This framework addresses the intensity loss and spectral distortion caused by partial laser footprint illumination at leaf boundaries, enabling more accurate retrieval of vegetation intensity and spectral parameters from HSL data.
 
 
 ## Workflow
@@ -11,7 +11,7 @@ The framework consists of **5 core modules** that process raw HSL point cloud da
 2. **Band Intensity Histogram Generation** (Fun1_LeafPointCloud_Histogram.py): Calculate intensity thresholds for edge detection using second-peak statistics across 32 HSL bands (409–914 nm).
 3. **Rough Edge Detection** (Fun2_RoughEdgeDetection.py): Extract candidate edge points by thresholding intensity values for each spectral band.
 4. **Refined Edge Extraction** (Fun3_RefinedEdgeDetection.py): Filter false edge points via grid projection, convolution-based neighborhood analysis, and morphological dilation.
-5. **Spherical Spatial Filtering** (Fun4_SphericalSpaceFiltering.py): Correct edge point intensities using the mean value of neighboring non-edge points within a spherical neighborhood.
+5. **Spherical Spatial Filtering** (Fun4_SphericalSpaceFiltering.py): Filter edge point intensities using the mean value of neighboring non-edge points within a spherical neighborhood.
 
 ## Installation
 ### Dependencies
